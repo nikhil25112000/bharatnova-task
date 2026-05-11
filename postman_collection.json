@@ -1,0 +1,227 @@
+{
+  "info": {
+    "name": "Social Feed Microservice",
+    "_postman_id": "d6caef3b-58f2-457d-b3fd-45f76d5ca970",
+    "description": "Postman collection for the Social Feed & Media Metadata Microservice.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/users",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "users"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get User",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/users/{{user_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "{{user_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/posts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"{{user_id}}\",\n  \"caption\": \"Hello #viral #fyp\",\n  \"media_url\": \"https://cdn.example.com/video.mp4\",\n  \"bitrate_status\": \"pending\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List Posts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/posts?limit=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Post",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/posts/{{post_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "{{post_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Post",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{base_url}}/api/v1/posts/{{post_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "posts",
+            "{{post_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Trending Posts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/trending",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "trending"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search Posts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/search?query=viral&limit=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "viral"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Generate Upload URL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/upload/presigned-url",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "upload",
+            "presigned-url"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"filename\": \"video.mp4\",\n  \"content_type\": \"video/mp4\",\n  \"file_size\": 1048576\n}"
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "user_id",
+      "value": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "key": "post_id",
+      "value": "00000000-0000-0000-0000-000000000002"
+    }
+  ]
+}
